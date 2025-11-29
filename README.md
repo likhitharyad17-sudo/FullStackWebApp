@@ -15,7 +15,7 @@ Instructions to Open the web app:
 
 4.run the server with : python manage.py runserver
 
-5.after clucking on the link check the home page 
+5.after clicking on the link check the home page 
 
 6.try booking one of the car 
 
