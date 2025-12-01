@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}CarConnect Rentals{% endblock %}</title>
+  {% load static %}
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- AOS Animations -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Orbitron:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'rentals/css/style.css' %}">
+</head>
+
+<body class="black-theme">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm fixed-top border-bottom border-success">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-3 text-blue-glow" href="{% url 'home' %}">
+  <span class="brand-font">Car</span>Connect
+</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a href="{% url 'home' %}" class="nav-link text-light">Home</a></li>
+          <li class="nav-item"><a href="#cars" class="nav-link text-light">Cars</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link text-light">About</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link text-light">Contact</a></li>
+          {% if user.is_authenticated %}
+            <li class="nav-item"><a href="/logout/" class="nav-link text-light">Logout</a></li>
+            
+          {% else %}
+            <li class="nav-item"><a href="/login/" class="nav-link text-light">Login</a></li>
+            <li class="nav-item"><a href="/register/" class="btn btn-outline-success btn-sm ms-2 fw-semibold px-3">Sign Up</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="mt-5 pt-5">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-white text-center py-4 border-top border-success mt-5">
+    <p class="mb-0">© {{ now.year }} <span class="fw-bold">CarConnect Rentals</span> — Drive Beyond Limits.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>

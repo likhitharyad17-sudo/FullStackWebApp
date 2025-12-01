@@ -1,0 +1,14 @@
+{% extends 'rentals/base.html' %}
+{% block title %}Logout | CarConnect{% endblock %}
+{% block content %}
+
+<section class="auth-section d-flex justify-content-center align-items-center text-center text-light">
+  <div class="auth-card bg-glass-dark p-5 rounded shadow-lg" data-aos="zoom-in">
+    <i class="bi bi-box-arrow-right text-success fs-1 mb-3"></i>
+    <h2 class="fw-bold text-glow mb-3">You’re Logged Out</h2>
+    <p class="text-muted mb-4">Thank you for using CarConnect. See you again soon!</p>
+    <a href="{% url 'login' %}" class="btn btn-gradient fw-semibold w-100">Login Again</a>
+  </div>
+</section>
+
+{% endblock %}

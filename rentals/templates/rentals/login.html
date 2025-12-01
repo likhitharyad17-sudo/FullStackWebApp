@@ -1,0 +1,19 @@
+{% extends 'rentals/base.html' %}
+{% block title %}Login | CarConnect{% endblock %}
+{% block content %}
+
+<section class="auth-section d-flex justify-content-center align-items-center text-light">
+  <div class="auth-card bg-glass-dark p-5 rounded shadow-lg" data-aos="fade-up">
+    <h2 class="fw-bold text-center text-glow mb-4">Welcome Back</h2>
+    <form method="post" class="text-start">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-gradient w-100 mt-3 fw-semibold">Login</button>
+    </form>
+    <p class="text-center mt-4 text-muted">Don't have an account?
+      <a href="{% url 'register' %}" class="text-success fw-semibold">Register</a>
+    </p>
+  </div>
+</section>
+
+{% endblock %}

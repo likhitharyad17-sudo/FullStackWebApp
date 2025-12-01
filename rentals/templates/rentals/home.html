@@ -1,0 +1,70 @@
+{% extends 'rentals/base.html' %}
+{% block title %}CarConnect — Blue Neon Edition{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-blue d-flex align-items-center justify-content-center text-center text-light">
+  <div data-aos="fade-up">
+    <h1 class="display-4 fw-bold mb-3 text-blue-glow">Drive the Future with CarConnect</h1>
+    <p class="lead text-secondary mb-4">Luxury. Power. Innovation — Find your ride today.</p>
+    <a href="#cars" class="btn btn-outline-primary btn-lg fw-semibold">Explore Cars</a>
+  </div>
+</section>
+
+<!-- Cars Section -->
+<section id="cars" class="py-5 text-light bg-black">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-5 fw-bold text-blue-glow">Available Cars</h2>
+
+    <!-- Search Bar -->
+    <form method="get" class="d-flex justify-content-center mb-5" style="max-width:400px;margin:auto;">
+      <input
+        type="text"
+        name="q"
+        class="form-control bg-dark text-light border-primary me-2"
+        placeholder="Search make, model, or year"
+        value="{{ q }}"
+      >
+      <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+    </form>
+
+    <!-- Cars Grid -->
+    <div class="row g-4">
+      {% for car in cars %}
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:1 }}00">
+        <div class="card bg-dark text-light border-primary shadow-lg h-100 text-center car-card-blue">
+          {% if car.image %}
+            <img src="{{ car.image.url }}" class="card-img-top rounded-top border-bottom border-primary" alt="{{ car }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="fw-bold">{{ car.make }} {{ car.model }}</h5>
+            <p class="text-muted">{{ car.year }} • {{ car.seats }} seats</p>
+            <p class="fw-bold text-primary fs-5">₹{{ car.price_per_day }}/day</p>
+            <a href="{{ car.get_absolute_url }}" class="btn btn-blue-gradient w-100 fw-semibold">Book Now</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p class="text-center text-muted">No cars available right now.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5 bg-dark text-center text-light" data-aos="fade-right">
+  <div class="container">
+    <h2 class="fw-bold mb-3 text-blue-glow">About CarConnect</h2>
+    <p class="lead text-secondary">Experience next-gen car rentals with advanced comfort and unbeatable style — powered by CarConnect.</p>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 text-center bg-black text-light border-top border-primary" data-aos="fade-left">
+  <div class="container">
+    <h2 class="fw-bold text-blue-glow mb-3">Contact Us</h2>
+    <p>Email: <strong>support@carconnect.com</strong> | Phone: <strong>+91 98765 43210</strong></p>
+  </div>
+</section>
+
+{% endblock %}

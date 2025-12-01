@@ -1,0 +1,20 @@
+{% extends 'rentals/base.html' %}
+{% block title %}Booking Confirmed | CarConnect{% endblock %}
+{% block content %}
+
+<section class="booking-success-section text-center text-light d-flex flex-column justify-content-center align-items-center">
+  <div class="success-card bg-glass-dark p-5 rounded shadow-lg" data-aos="zoom-in">
+    <div class="success-icon mb-4">
+      <i class="bi bi-check-circle-fill text-success"></i>
+    </div>
+    <h2 class="fw-bold text-glow mb-3">Booking Successful!</h2>
+    <p class="text-secondary fs-5 mb-4">
+      Your car booking has been confirmed. We’ll reach out with the details soon.
+    </p>
+    <a href="{% url 'home' %}" class="btn btn-gradient fw-semibold px-4 py-2">
+      <i class="bi bi-house-door me-2"></i>Back to Home
+    </a>
+  </div>
+</section>
+
+{% endblock %}

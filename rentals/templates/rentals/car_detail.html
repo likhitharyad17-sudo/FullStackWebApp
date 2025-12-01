@@ -1,0 +1,44 @@
+{% extends 'rentals/base.html' %}
+{% block title %}Car Details | CarConnect{% endblock %}
+{% block content %}
+
+<section class="car-detail-section text-light py-5">
+  <div class="container" data-aos="fade-up">
+    
+    <!-- Car Overview -->
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center" data-aos="fade-right">
+        {% if car.image %}
+          <img src="{{ car.image.url }}" alt="{{ car }}" class="img-fluid rounded border border-success shadow-lg car-detail-img">
+        {% else %}
+          <div class="placeholder bg-dark border border-success p-5 rounded">No Image Available</div>
+        {% endif %}
+      </div>
+      <div class="col-md-6 mt-4 mt-md-0" data-aos="fade-left">
+        <h1 class="fw-bold text-glow mb-3">{{ car.make }} {{ car.model }}</h1>
+        <p class="text-secondary fs-5">{{ car.description|default:"This car is perfect for your next trip!" }}</p>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li><i class="bi bi-speedometer2 text-success me-2"></i><strong>Year:</strong> {{ car.year }}</li>
+          <li><i class="bi bi-people text-success me-2"></i><strong>Seats:</strong> {{ car.seats }}</li>
+          <li><i class="bi bi-currency-rupee text-success me-2"></i><strong>Price:</strong> ₹{{ car.price_per_day }}/day</li>
+          <li><i class="bi bi-check-circle text-success me-2"></i><strong>Status:</strong> {% if car.available %}Available{% else %}<span class="text-danger">Not Available</span>{% endif %}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Booking Form -->
+    <div class="booking-form-section mt-5" data-aos="zoom-in">
+      <div class="booking-card bg-glass-dark mx-auto p-5 rounded shadow-lg" style="max-width: 600px;">
+        <h3 class="fw-bold mb-3 text-success text-center">Book This Car</h3>
+        <form method="post" class="text-light">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="btn btn-gradient w-100 mt-3 fw-semibold">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
